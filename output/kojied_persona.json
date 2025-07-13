@@ -1,0 +1,54 @@
+{
+    "demographics": {
+        "age": "Late 20s to early 30s",
+        "location": "New York City or the broader region",
+        "gender": "Male"
+    },
+    "interests": [
+        "Going to bars and dancing",
+        "iOS development",
+        "Spatial computing",
+        "VisionOS",
+        "Futuristic tech",
+        "Anime",
+        "Video games",
+        "Strategy games",
+        "City-building",
+        "Resource management"
+    ],
+    "personality_traits": [
+        "Reflective",
+        "Self-aware",
+        "Open-minded",
+        "Non-judgmental",
+        "Humorous",
+        "Lighthearted",
+        "Sarcastic",
+        "Ironic"
+    ],
+    "activity_patterns": {
+        "posting_frequency": "Infrequent",
+        "top_subreddits": [
+            "Technology",
+            "Gaming",
+            "City-building",
+            "r/AskReddit"
+        ]
+    },
+    "career": "iOS developer",
+    "technical_skills": [
+        "iOS development",
+        "VisionOS",
+        "Spatial computing"
+    ],
+    "social_behavior": "Friendly and respectful",
+    "citations": {
+        "demographics": "Posts and comments",
+        "interests": "Posts and comments",
+        "personality_traits": "Posts and comments",
+        "activity_patterns": "Posts and comments",
+        "career": "Posts",
+        "technical_skills": "Posts",
+        "social_behavior": "Comments"
+    }
+}

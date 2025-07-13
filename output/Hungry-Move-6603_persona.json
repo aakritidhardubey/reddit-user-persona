@@ -1,0 +1,40 @@
+{
+    "demographics": {
+        "age": "Late 20s to early 30s",
+        "location": "Lucknow (LKO), previously from Delhi",
+        "gender": "Male"
+    },
+    "interests": [
+        "Fitness and health",
+        "Cooking",
+        "Automobiles"
+    ],
+    "personality_traits": [
+        "Observant and curious",
+        "Sarcastic and humorous",
+        "Frustrated with corruption and bureaucratic issues"
+    ],
+    "activity_patterns": {
+        "posting_frequency": "Infrequent",
+        "top_subreddits": [
+            "r/Lucknow",
+            "r/Delhi",
+            "Health and fitness related subreddits"
+        ]
+    },
+    "career": "Business professional",
+    "technical_skills": [
+        "Basic computer skills",
+        "Familiarity with online platforms"
+    ],
+    "social_behavior": "Engages in conversations, shares personal anecdotes, uses humor and sarcasm",
+    "citations": {
+        "demographics": "User posts and comments",
+        "interests": "User posts and comments",
+        "personality_traits": "User posts and comments",
+        "activity_patterns": "User posting history",
+        "career": "User posts and comments",
+        "technical_skills": "Implicit from Reddit usage",
+        "social_behavior": "User posts and comments"
+    }
+}
