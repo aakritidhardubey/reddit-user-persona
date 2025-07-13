@@ -57,8 +57,6 @@ REDDIT_USER_AGENT=script:PersonaBuilder:v1.0 (by u/yourusername)
 GROQ_API_KEY=your_groq_api_key
 ```
 
-⚠️ **Important**: Do not commit your `.env` file to GitHub.
-
 ---
 
 ## 🚀 How to Run
