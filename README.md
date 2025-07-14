@@ -76,6 +76,8 @@ The script will:
 4.Save the output as both .txt and .json files in the output/ folder
 
 5.Let you continue entering more usernames until you type exit to quit
+
+
 ---
 
 ## 📂 Output Files
