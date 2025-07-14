@@ -1,40 +1,39 @@
 {
     "demographics": {
         "age": "Late 20s to early 30s",
-        "location": "Lucknow (LKO), previously from Delhi",
+        "location": "Lucknow, previously from Delhi",
         "gender": "Male"
     },
     "interests": [
-        "Fitness and health",
-        "Cooking",
-        "Automobiles"
+        "Food and cooking",
+        "Fitness or health"
     ],
     "personality_traits": [
-        "Observant and curious",
         "Sarcastic and humorous",
-        "Frustrated with corruption and bureaucratic issues"
+        "Observant and curious",
+        "Possibly frustrated with the system"
     ],
     "activity_patterns": {
-        "posting_frequency": "Infrequent",
+        "posting_frequency": "Occasional",
         "top_subreddits": [
-            "r/Lucknow",
-            "r/Delhi",
-            "Health and fitness related subreddits"
+            "Lucknow",
+            "Delhi",
+            "India",
+            "Food",
+            "Health",
+            "Fitness"
         ]
     },
-    "career": "Business professional",
-    "technical_skills": [
-        "Basic computer skills",
-        "Familiarity with online platforms"
-    ],
-    "social_behavior": "Engages in conversations, shares personal anecdotes, uses humor and sarcasm",
+    "career": "Business professional, possibly an entrepreneur or freelancer",
+    "technical_skills": [],
+    "social_behavior": "Casual, conversational discussions with humor and sarcasm",
     "citations": {
-        "demographics": "User posts and comments",
-        "interests": "User posts and comments",
-        "personality_traits": "User posts and comments",
-        "activity_patterns": "User posting history",
-        "career": "User posts and comments",
+        "demographics": "Posts and comments",
+        "interests": "Posts and comments",
+        "personality_traits": "Posts and comments",
+        "activity_patterns": "Posts and comments",
+        "career": "Posts and comments",
         "technical_skills": "Implicit from Reddit usage",
-        "social_behavior": "User posts and comments"
+        "social_behavior": "Posts and comments"
     }
 }

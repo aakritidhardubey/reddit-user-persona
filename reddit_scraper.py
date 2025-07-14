@@ -29,20 +29,27 @@ def scrape_user(username):
     return posts,comments
 
 if __name__ == "__main__":
-    usernames = ["kojied", "Hungry-Move-6603"]
+    while True:
+        username = input("Enter the Reddit username (without r/ or u/)(or type 'exit' to quit): ").strip()
 
-    os.makedirs("output", exist_ok=True)
+        if username.lower()=="exit":
+            break
 
-    for username in usernames:
         print(f"\n🔍 Generating persona for u/{username}...")
-
         posts, comments = scrape_user(username)
-        persona_text,persona_json = generate_persona(posts, comments)
 
-        with open(f"output/{username}_persona.txt", "w", encoding="utf-8") as f:
-            f.write(persona_text)
+        if not posts and not comments:
+            print("No data found or user doesn't exist.")
+        else:
+            persona_text,persona_json = generate_persona(posts, comments)
 
-        with open(f"output/{username}_persona.json", "w", encoding="utf-8") as jf:
-            json.dump(persona_json,jf,indent=4,ensure_ascii=False)
+            output_dir="output"
+            os.makedirs(output_dir,exist_ok=True)
 
-        print(f"Persona saved ")
+            with open(f"output/{username}_persona.txt", "w", encoding="utf-8") as f:
+                f.write(persona_text)
+
+            with open(f"output/{username}_persona.json", "w", encoding="utf-8") as jf:
+                json.dump(persona_json,jf,indent=4,ensure_ascii=False)
+
+            print(f"Persona saved ")

@@ -67,10 +67,15 @@ python reddit_scraper.py
 
 The script will:
 
-1. Scrape Reddit data for each user listed
-2. Generate both `.txt` and `.json` persona files
-3. Save them in the `output/` directory
+1.Prompt you to enter a Reddit username (e.g., kojied, Hungry-Move-6603)
 
+2.Scrape the user’s public posts and comments
+
+3.Generate a detailed persona using LLM
+
+4.Save the output as both .txt and .json files in the output/ folder
+
+5.Let you continue entering more usernames until you type exit to quit
 ---
 
 ## 📂 Output Files

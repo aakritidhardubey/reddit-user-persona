@@ -1,54 +1,40 @@
 {
     "demographics": {
         "age": "Late 20s to early 30s",
-        "location": "New York City or the broader region",
+        "location": "New York City or surrounding areas",
         "gender": "Male"
     },
     "interests": [
-        "Going to bars and dancing",
-        "iOS development",
-        "Spatial computing",
-        "VisionOS",
-        "Futuristic tech",
-        "Anime",
-        "Video games",
-        "Strategy games",
-        "City-building",
-        "Resource management"
+        "Music and dancing",
+        "Gaming",
+        "Technology and innovation",
+        "Film and media",
+        "iOS development and spatial computing"
     ],
     "personality_traits": [
-        "Reflective",
-        "Self-aware",
-        "Open-minded",
-        "Non-judgmental",
-        "Humorous",
-        "Lighthearted",
-        "Sarcastic",
-        "Ironic"
+        "Self-aware and introspective",
+        "Open-minded and non-judgmental",
+        "Humorous and lighthearted",
+        "Inquisitive and curious"
     ],
     "activity_patterns": {
-        "posting_frequency": "Infrequent",
-        "top_subreddits": [
-            "Technology",
-            "Gaming",
-            "City-building",
-            "r/AskReddit"
-        ]
+        "posting_frequency": "Moderate",
+        "top_subreddits": []
     },
     "career": "iOS developer",
     "technical_skills": [
         "iOS development",
-        "VisionOS",
-        "Spatial computing"
+        "Spatial computing",
+        "Familiarity with 3D maps and 360˚ video"
     ],
-    "social_behavior": "Friendly and respectful",
+    "social_behavior": "Engages in conversations, responds to comments, offers advice, and shows appreciation for others' contributions",
     "citations": {
-        "demographics": "Posts and comments",
-        "interests": "Posts and comments",
-        "personality_traits": "Posts and comments",
-        "activity_patterns": "Posts and comments",
-        "career": "Posts",
-        "technical_skills": "Posts",
-        "social_behavior": "Comments"
+        "demographics": "",
+        "interests": "",
+        "personality_traits": "",
+        "activity_patterns": "",
+        "career": "",
+        "technical_skills": "",
+        "social_behavior": ""
     }
 }
