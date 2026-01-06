@@ -1,16 +1,37 @@
+import os
+import sys
+import json
 from flask import Flask, request, jsonify, render_template, send_from_directory
 from flask_cors import CORS
-import os
-import json
-from reddit_scraper import scrape_user
-from groq_llm import generate_persona
+
+# Add current directory to Python path
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+try:
+    from reddit_scraper import scrape_user
+    from groq_llm import generate_persona
+except ImportError as e:
+    print(f"Import error: {e}")
+    sys.exit(1)
 
 app = Flask(__name__)
 CORS(app)
 
+# Configure app
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key')
+app.config['DEBUG'] = os.environ.get('FLASK_ENV') == 'development'
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/health')
+def health_check():
+    return jsonify({
+        'status': 'healthy',
+        'message': 'Reddit Persona Generator is running',
+        'debug': app.config['DEBUG']
+    })
 
 @app.route('/api/generate-persona', methods=['POST'])
 def generate_persona_api():
@@ -109,5 +130,19 @@ def get_persona(username):
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
+    # Check for required environment variables
+    required_vars = ['REDDIT_CLIENT_ID', 'REDDIT_CLIENT_SECRET', 'REDDIT_CLIENT_AGENT', 'GROQ_API_KEY']
+    missing_vars = [var for var in required_vars if not os.environ.get(var)]
+    
+    if missing_vars:
+        print(f"❌ Missing required environment variables: {', '.join(missing_vars)}")
+        print("Please set these environment variables before running the app.")
+        sys.exit(1)
+    
     port = int(os.environ.get('PORT', 5000))
-    app.run(debug=False, host='0.0.0.0', port=port)
+    debug_mode = os.environ.get('FLASK_ENV') == 'development'
+    
+    print(f"🚀 Starting Reddit Persona Generator on port {port}")
+    print(f"🔧 Debug mode: {debug_mode}")
+    
+    app.run(debug=debug_mode, host='0.0.0.0', port=port)
