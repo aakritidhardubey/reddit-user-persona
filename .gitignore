@@ -31,8 +31,9 @@ ENV/
 
 # Output files (generated personas)
 output/
-*.txt
-*.json
+# Exclude generated persona files but keep config files
+output/*.txt
+output/*.json
 
 # IDE
 .vscode/

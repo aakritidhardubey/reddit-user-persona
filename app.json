@@ -1,0 +1,24 @@
+{
+  "name": "Reddit Persona Generator",
+  "description": "Generate detailed user personas from Reddit profiles using AI",
+  "keywords": ["python", "flask", "reddit", "ai", "persona"],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "env": {
+    "REDDIT_CLIENT_ID": {
+      "description": "Reddit API Client ID"
+    },
+    "REDDIT_CLIENT_SECRET": {
+      "description": "Reddit API Client Secret"
+    },
+    "REDDIT_CLIENT_AGENT": {
+      "description": "Reddit API User Agent"
+    },
+    "GROQ_API_KEY": {
+      "description": "Groq API Key for LLM"
+    }
+  }
+}

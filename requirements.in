@@ -1,0 +1,7 @@
+# Core dependencies for Reddit Persona Generator
+Flask
+Flask-CORS
+openai
+praw
+python-dotenv
+requests
