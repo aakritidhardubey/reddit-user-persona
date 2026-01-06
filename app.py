@@ -9,9 +9,16 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 try:
     from reddit_scraper import scrape_user
-    from groq_llm import generate_persona
+    # Try to import the main groq_llm first, fallback to simple version
+    try:
+        from groq_llm import generate_persona
+        print("✅ Using groq_llm.py")
+    except Exception as e:
+        print(f"⚠️  groq_llm.py failed, trying simple version: {e}")
+        from groq_simple import generate_persona
+        print("✅ Using groq_simple.py")
 except ImportError as e:
-    print(f"Import error: {e}")
+    print(f"❌ Import error: {e}")
     sys.exit(1)
 
 app = Flask(__name__)

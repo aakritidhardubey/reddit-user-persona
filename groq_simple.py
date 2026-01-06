@@ -1,30 +1,34 @@
 import os
 import json
-import sys
+import requests
 from dotenv import load_dotenv
 
 load_dotenv()
 
-# Try to import OpenAI with error handling
-try:
-    from openai import OpenAI
-except ImportError as e:
-    print(f"Failed to import OpenAI: {e}")
-    sys.exit(1)
+def make_groq_request(messages, model="llama-3.3-70b-versatile", temperature=0.7):
+    """Make a direct HTTP request to Groq API"""
+    api_key = os.getenv("GROQ_API_KEY")
+    if not api_key:
+        raise ValueError("GROQ_API_KEY not found in environment variables")
+    
+    url = "https://api.groq.com/openai/v1/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+    
+    data = {
+        "model": model,
+        "messages": messages,
+        "temperature": temperature
+    }
+    
+    response = requests.post(url, headers=headers, json=data)
+    response.raise_for_status()
+    
+    return response.json()
 
-# Initialize client with error handling
-try:
-    client = OpenAI(
-        api_key=os.getenv("GROQ_API_KEY"),
-        base_url="https://api.groq.com/openai/v1"
-    )
-    print("✅ OpenAI client initialized successfully")
-except Exception as e:
-    print(f"❌ Failed to initialize OpenAI client: {e}")
-    print(f"API Key present: {'Yes' if os.getenv('GROQ_API_KEY') else 'No'}")
-    sys.exit(1)
-
-def generate_prompt(posts,comments):
+def generate_prompt(posts, comments):
     return f"""
 You are an AI tasked with building a Reddit user persona from the following posts and comments.
 
@@ -48,6 +52,7 @@ POSTS:
 COMMENTS:
 {chr(10).join(comments[:10])}
 """
+
 def generate_structured_prompt(text_persona):
     return f"""
 Convert the following user persona into a valid JSON object. Return ONLY the JSON, no explanations, no markdown formatting, no code blocks.
@@ -84,7 +89,6 @@ Text persona to convert:
 
 JSON:"""
 
-
 def clean_json_response(response_text):
     """Clean the JSON response from markdown formatting and other issues"""
     # Remove markdown code blocks
@@ -105,56 +109,40 @@ def clean_json_response(response_text):
     
     return response_text
 
-def generate_persona(posts,comments):
-    prompt=generate_prompt(posts,comments)
-
-    response=client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[
-            {"role":"user","content":prompt}
-        ],
-        temperature=0.7
-    )
-    persona_text =response.choices[0].message.content.strip()
-
-    struct_prompt = generate_structured_prompt(persona_text)
-    struct_response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[{"role": "user", "content": struct_prompt}],
-        temperature=0.3
-    )
-
-    raw_json_response = struct_response.choices[0].message.content
-    cleaned_json = clean_json_response(raw_json_response)
-    
+def generate_persona(posts, comments):
     try:
-        persona_json = json.loads(cleaned_json)
-    except json.JSONDecodeError as e:
-        print(f"JSON Parse Error: {e}")
-        print(f"Raw response: {raw_json_response}")
-        print(f"Cleaned response: {cleaned_json}")
+        prompt = generate_prompt(posts, comments)
         
-        # Try to extract JSON from the raw output if it exists
-        if "raw_output" in raw_json_response:
-            try:
-                # Try to parse the raw_output field
-                import re
-                json_match = re.search(r'\{.*\}', raw_json_response, re.DOTALL)
-                if json_match:
-                    potential_json = json_match.group()
-                    potential_json = clean_json_response(potential_json)
-                    persona_json = json.loads(potential_json)
-                else:
-                    raise ValueError("No JSON found in response")
-            except:
-                persona_json = {
-                    "error": "Failed to parse JSON from model output.",
-                    "raw_output": raw_json_response
-                }
-        else:
+        # Generate text persona
+        response = make_groq_request([
+            {"role": "user", "content": prompt}
+        ], temperature=0.7)
+        
+        persona_text = response['choices'][0]['message']['content'].strip()
+        
+        # Generate structured JSON
+        struct_prompt = generate_structured_prompt(persona_text)
+        struct_response = make_groq_request([
+            {"role": "user", "content": struct_prompt}
+        ], temperature=0.3)
+        
+        raw_json_response = struct_response['choices'][0]['message']['content']
+        cleaned_json = clean_json_response(raw_json_response)
+        
+        try:
+            persona_json = json.loads(cleaned_json)
+        except json.JSONDecodeError as e:
+            print(f"JSON Parse Error: {e}")
+            print(f"Raw response: {raw_json_response}")
+            print(f"Cleaned response: {cleaned_json}")
+            
             persona_json = {
                 "error": "Failed to parse JSON from model output.",
                 "raw_output": raw_json_response
             }
-
-    return persona_text, persona_json
+        
+        return persona_text, persona_json
+        
+    except Exception as e:
+        print(f"Error in generate_persona: {e}")
+        return f"Error generating persona: {str(e)}", {"error": str(e)}

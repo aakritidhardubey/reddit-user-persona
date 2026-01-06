@@ -1,40 +1,44 @@
 {
     "demographics": {
         "age": "Late 20s to early 30s",
-        "location": "New York City or surrounding areas",
+        "location": "New York City",
         "gender": "Male"
     },
     "interests": [
-        "Music and dancing",
-        "Gaming",
-        "Technology and innovation",
-        "Film and media",
-        "iOS development and spatial computing"
+        "Music and Dance",
+        "Technology and Innovation",
+        "Anime and Manga",
+        "Sports"
     ],
     "personality_traits": [
-        "Self-aware and introspective",
-        "Open-minded and non-judgmental",
-        "Humorous and lighthearted",
-        "Inquisitive and curious"
+        "Reflective",
+        "Open-minded",
+        "Curious"
     ],
     "activity_patterns": {
-        "posting_frequency": "Moderate",
-        "top_subreddits": []
+        "posting_frequency": "Regular but not overly frequent",
+        "top_subreddits": [
+            "r/iOS",
+            "r/spatialcomputing",
+            "r/anime",
+            "r/movies",
+            "r/nyc"
+        ]
     },
-    "career": "iOS developer",
+    "career": "iOS Developer",
     "technical_skills": [
-        "iOS development",
-        "Spatial computing",
-        "Familiarity with 3D maps and 360˚ video"
+        "Programming",
+        "AI and Machine Learning",
+        "Spatial Computing"
     ],
-    "social_behavior": "Engages in conversations, responds to comments, offers advice, and shows appreciation for others' contributions",
+    "social_behavior": "Engaging, Humorous, Collaborative",
     "citations": {
-        "demographics": "",
-        "interests": "",
-        "personality_traits": "",
-        "activity_patterns": "",
-        "career": "",
-        "technical_skills": "",
-        "social_behavior": ""
+        "demographics": "Provided posts and comments",
+        "interests": "Provided posts and comments",
+        "personality_traits": "Provided posts and comments",
+        "activity_patterns": "Provided posts and comments",
+        "career": "Provided posts and comments",
+        "technical_skills": "Provided posts and comments",
+        "social_behavior": "Provided posts and comments"
     }
 }

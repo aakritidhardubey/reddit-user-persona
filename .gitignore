@@ -1,6 +1,8 @@
 # Environment variables
 .env
 
+output/
+
 # Python
 __pycache__/
 *.py[cod]
@@ -51,3 +53,4 @@ Thumbs.db
 # Temporary files
 fix_existing_personas.py
 demo.md
+test_openai.py
