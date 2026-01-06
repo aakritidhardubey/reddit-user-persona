@@ -1,6 +1,7 @@
 # 🧠 Reddit User Persona Generator
 
 This project generates detailed **user personas** based on public Reddit profiles using a combination of **Reddit API** and **Groq's LLaMA-3 LLM**. The script scrapes posts and comments from a user and analyzes them to extract personality, interests, demographics, career indicators, and more.
+It's Deployed now , check it at:- [reddit-persona](https://imaginative-jane-aakritidubey21-5e1aa5fc.koyeb.app/)
 
 ---
 
