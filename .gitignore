@@ -1,9 +1,52 @@
-# Ignore virtual environment
-venv/
-
-# Ignore environment variables
+# Environment variables
 .env
 
-# Ignore output folders if needed
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Output files (generated personas)
+output/
+*.txt
+*.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+fix_existing_personas.py
+demo.md

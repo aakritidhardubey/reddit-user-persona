@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧠 Reddit User Persona Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="reddit-bg">
+        <div class="container">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-content">
+                    <div class="reddit-logo">
+                        <i class="fab fa-reddit-alien"></i>
+                    </div>
+                    <h1>Reddit User Persona Generator</h1>
+                    <p>Discover the personality behind any Reddit profile using AI</p>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Input Section -->
+                <section class="input-section">
+                    <div class="input-card">
+                        <h2><i class="fab fa-reddit"></i> Enter Reddit Username</h2>
+                        <div class="input-group">
+                            <div class="input-wrapper">
+                                <span class="input-prefix">u/</span>
+                                <input type="text" id="usernameInput" placeholder="kojied" autocomplete="off">
+                            </div>
+                            <button id="generateBtn" class="generate-btn">
+                                <i class="fas fa-search"></i>
+                                Analyze Profile
+                            </button>
+                        </div>
+                        <div class="loading-indicator" id="loadingIndicator">
+                            <div class="reddit-spinner"></div>
+                            <span>Analyzing Reddit profile...</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Results Section -->
+                <section class="results-section" id="resultsSection">
+                    <div class="results-header">
+                        <h2><i class="fas fa-user-circle"></i> <span id="usernameDisplay"></span> Persona Analysis</h2>
+                        <div class="download-buttons">
+                            <button id="downloadText" class="download-btn">
+                                <i class="fas fa-file-text"></i> Download Text
+                            </button>
+                            <button id="downloadJson" class="download-btn">
+                                <i class="fas fa-code"></i> Download JSON
+                            </button>
+                            <button id="downloadPdf" class="download-btn">
+                                <i class="fas fa-file-pdf"></i> Download PDF
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Persona Cards -->
+                    <div class="persona-cards" id="personaCards">
+                        <div class="persona-card demographics-card">
+                            <div class="card-header">
+                                <i class="fas fa-user"></i>
+                                <h3>Demographics</h3>
+                            </div>
+                            <div class="card-content" id="demographicsContent">
+                                <!-- Demographics will be populated here -->
+                            </div>
+                        </div>
+
+                        <div class="persona-card interests-card">
+                            <div class="card-header">
+                                <i class="fas fa-heart"></i>
+                                <h3>Interests & Hobbies</h3>
+                            </div>
+                            <div class="card-content" id="interestsContent">
+                                <!-- Interests will be populated here -->
+                            </div>
+                        </div>
+
+                        <div class="persona-card personality-card">
+                            <div class="card-header">
+                                <i class="fas fa-smile"></i>
+                                <h3>Personality Traits</h3>
+                            </div>
+                            <div class="card-content" id="personalityContent">
+                                <!-- Personality will be populated here -->
+                            </div>
+                        </div>
+
+                        <div class="persona-card career-card">
+                            <div class="card-header">
+                                <i class="fas fa-briefcase"></i>
+                                <h3>Career & Skills</h3>
+                            </div>
+                            <div class="card-content" id="careerContent">
+                                <!-- Career will be populated here -->
+                            </div>
+                        </div>
+
+                        <div class="persona-card activity-card">
+                            <div class="card-header">
+                                <i class="fas fa-chart-line"></i>
+                                <h3>Activity Patterns</h3>
+                            </div>
+                            <div class="card-content" id="activityContent">
+                                <!-- Activity will be populated here -->
+                            </div>
+                        </div>
+
+                        <div class="persona-card social-card">
+                            <div class="card-header">
+                                <i class="fas fa-comments"></i>
+                                <h3>Social Behavior</h3>
+                            </div>
+                            <div class="card-content" id="socialContent">
+                                <!-- Social behavior will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Analysis Section -->
+                    <div class="detailed-analysis-section">
+                        <div class="section-header">
+                            <div class="section-title">
+                                <i class="fas fa-file-alt"></i>
+                                <h3>Detailed Analysis Report</h3>
+                            </div>
+                            <div class="analysis-stats" id="analysisStats">
+                                <div class="stat-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span id="analysisTime">Just now</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <span id="confidenceScore">High Confidence</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detailed-card">
+                            <div class="detailed-content" id="detailedContent">
+                                <!-- Detailed analysis will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p>Built with ❤️ | Powered by Reddit API & Groq LLaMA-3</p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

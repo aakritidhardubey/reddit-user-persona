@@ -53,14 +53,58 @@ Create a `.env` file in the root folder and add the following content:
 ```env
 REDDIT_CLIENT_ID=your_reddit_client_id
 REDDIT_CLIENT_SECRET=your_reddit_client_secret
-REDDIT_USER_AGENT=script:PersonaBuilder:v1.0 (by u/yourusername)
+REDDIT_CLIENT_AGENT=script:PersonaBuilder:v1.0 (by u/yourusername)
 GROQ_API_KEY=your_groq_api_key
 ```
 
 ---
 
+## 🌐 Deployment
+
+### Koyeb Deployment
+1. Fork this repository to your GitHub
+2. Connect your GitHub account to Koyeb
+3. Create a new app and select this repository
+4. Set the following environment variables in Koyeb:
+   - `REDDIT_CLIENT_ID`
+   - `REDDIT_CLIENT_SECRET` 
+   - `REDDIT_CLIENT_AGENT`
+   - `GROQ_API_KEY`
+5. Deploy!
+
+### Other Platforms (Heroku, Railway, etc.)
+The app is configured to work with any platform that supports Python web apps:
+- Uses `Procfile` for process definition
+- Reads `PORT` from environment variables
+- Handles production vs development modes automatically
+
+---
+
 ## 🚀 How to Run
 
+### 🌐 Web Interface (Recommended)
+
+#### Local Development
+```bash
+python run_app.py
+```
+
+Then open your browser and go to: **http://localhost:5000**
+
+#### Production Deployment (Koyeb/Heroku/etc.)
+1. Set environment variables in your deployment platform
+2. The app will automatically run in production mode
+3. File storage is disabled in production (ephemeral storage)
+
+The web interface provides:
+- 🎨 Beautiful, modern UI with gradient backgrounds
+- 📊 Visual persona cards with organized information
+- 📝 Detailed analysis section with narrative explanation
+- 🔄 Real-time generation with animated loading indicators
+- 📱 Fully responsive design for mobile and desktop
+- 💾 Download options (Text, JSON, PDF)
+
+### 💻 Command Line Interface
 ```bash
 python reddit_scraper.py
 ```
@@ -115,23 +159,34 @@ Structured format suitable for dashboards or automation:
 
 ## 🧠 Technologies Used
 
+### Backend
 - Python 3.11+
 - Reddit API with PRAW
 - Groq LLaMA-3 API
+- Flask web framework
 - dotenv, openai, json
+
+### Frontend
+- HTML5, CSS3, JavaScript (ES6+)
+- Modern responsive design with CSS Grid & Flexbox
+- Font Awesome icons
+- Gradient backgrounds and smooth animations
+- RESTful API integration
 
 ---
 
 ## 🚧 Future Improvements
 
-| Feature | Description |
-|---------|-------------|
-| 🔍 Search UI | Build Streamlit UI to enter any Reddit profile |
-| 📊 Dashboard | View multiple personas visually |
-| 💬 LLM Comparisons | Try GPT-4, Claude, Mistral, etc. |
-| 🗃️ Data Persistence | Store outputs in MongoDB or SQLite |
-| 🧠 Topic Extraction | NLP-based topic and summary generation |
-| 📤 CSV Export | Export to Excel/Power BI/Google Sheets |
+| Feature | Description | Status |
+|---------|-------------|--------|
+| ✅ Web UI | Beautiful web interface to enter Reddit profiles | **Completed** |
+| ✅ Visual Dashboard | View personas with organized cards and multiple views | **Completed** |
+| 💬 LLM Comparisons | Try GPT-4, Claude, Mistral, etc. | Planned |
+| 🗃️ Data Persistence | Store outputs in MongoDB or SQLite | Planned |
+| 🧠 Topic Extraction | NLP-based topic and summary generation | Planned |
+| 📤 CSV Export | Export to Excel/Power BI/Google Sheets | Planned |
+| 🔍 Advanced Search | Search through generated personas | Planned |
+| 📊 Analytics | Usage statistics and persona insights | Planned |
 
 ---
 
